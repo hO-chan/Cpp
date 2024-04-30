@@ -1,0 +1,76 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+    ifstream fin;
+    ofstream fout;
+
+    char line[256] = { 0, };
+    int bit_l = 0;
+    int i = 0;
+    int count = 0; //minterm 의 개수
+
+    fin.open("input_minterm.txt");
+    fout.open("result.txt");
+
+    //파일 오픈 에러
+    if (((fin.is_open()) == false ) || ((fout.is_open()) == false)) {
+        
+        cout << "FILE OPEN ERROR";
+
+        return -1;
+    }
+
+
+    //파일로부터 비트 길이 받기
+    fin.getline(line, 256);
+
+    bit_l = line[0] - 48;
+
+    cout << bit_l << endl;
+
+    //파일끝날때까지 minterm 받기
+    while (fin.eof() != true)
+    {
+        //get line 이용해서 \n단위로 받기
+
+        fin.getline(line, 255);
+
+        //출력
+        while (line[i] != NULL)
+        {
+            cout << line[i];
+            i++;
+        }
+        i = 0;
+  
+        //공백과 개행 단위로 받기
+        fin >>line; //m이 들어감
+        //출력
+        cout << line;
+        
+
+        
+        
+        
+    }
+
+    fin.close();
+    fout.close();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
